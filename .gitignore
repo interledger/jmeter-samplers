@@ -3,9 +3,6 @@ gradle.properties
 build
 jmeter.log
 out
-JMeterWebSocketSamplers.iml
-JMeterWebSocketSamplers.ipr
-JMeterWebSocketSamplers.iws
 .idea
 my_samples
 testresults

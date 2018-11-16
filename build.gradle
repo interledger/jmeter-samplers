@@ -2,41 +2,69 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'signing'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath('com.github.jengelman.gradle.plugins:shadow:4.0.2')
+    }
+}
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
 }
 
 dependencies {
 
-    // https://mvnrepository.com/artifact/org.apache.jmeter/ApacheJMeter_core
-    compile('org.apache.jmeter:ApacheJMeter_core:3.1') {
-        transitive = false    // Just avoid downloading half the internet
-    }
-
-    compile('org.apache.jmeter:ApacheJMeter_components:3.1') {
-        transitive = false    // Just avoid downloading half the internet
-    }
-
-    compile('org.apache.jmeter:ApacheJMeter_http:3.1') {
-        transitive = false    // Just avoid downloading half the internet
-    }
-
-    // https://mvnrepository.com/artifact/org.apache.jmeter/jorphan
-    compile('org.apache.jmeter:jorphan:3.1') {
+    implementation('com.jgoodies:forms:1.2.1') {
         transitive = false
     }
 
-    // https://mvnrepository.com/artifact/logkit/logkit
-    compile('logkit:logkit:2.0') {
+    implementation('org.interledger:ilp-core:0.14.0-SNAPSHOT')
+    implementation('org.interledger:ilp-core-codecs:0.14.0-SNAPSHOT')
+    implementation('org.interledger:btp-core:0.14.0-SNAPSHOT')
+    implementation('org.interledger:btp-core-codecs:0.14.0-SNAPSHOT')
+    implementation('org.interledger:codec-framework:0.14.0-SNAPSHOT')
+
+    compile('net.luminis.jmeter:jmeter-websocket-samplers:1.2.1')
+
+    compile('org.apache.jmeter:ApacheJMeter_core:5.0') {
+        transitive = false    // Just avoid downloading half the internet
+    }
+
+    compile('org.apache.jmeter:ApacheJMeter_components:5.0') {
+        transitive = false    // Just avoid downloading half the internet
+    }
+
+    compile('org.apache.jmeter:ApacheJMeter_http:5.0') {
+        transitive = false    // Just avoid downloading half the internet
+    }
+
+    compile('org.apache.jmeter:jorphan:5.0') {
         transitive = false
     }
+    compile('org.apache.avalon.logkit:avalon-logkit:2.2.1')
+    {
+        transitive = false
+    }
+    compile('org.slf4j:slf4j-api:1.7.25') {
+        transitive = false
+    }
+
+    compile('org.apache.avalon.framework:avalon-framework-api:4.3.1')
+    compile('org.apache.avalon.framework:avalon-framework-impl:4.3.1')
+
+    compile('commons-codec:commons-codec:1.11')
 
     testCompile 'junit:junit:4.12'
 
     testCompile('org.mockito:mockito-core:2.2.15')
-
-    testCompile('avalon-framework:avalon-framework:4.1.4')
 
     // https://mvnrepository.com/artifact/commons-io/commons-io
     testCompile('commons-io:commons-io:2.5')
@@ -53,35 +81,6 @@ sourceSets {
 }
 
 version = 'dev'
-
-task determineVersion {
-    doLast {
-        def proc = "git describe --exact-match HEAD".execute()
-        proc.waitFor()
-        if (proc.exitValue()) {
-            logger.quiet("Building development version.")
-        } else {
-            def versionTag = proc.in.readLines()[0]
-            // Check that tag matches format like v0.1.2.beta or 1.0 (OSGi version syntax)
-            if (versionTag ==~ /v?[0-9]+(\.\d+){1,2}(\.[\w\d_-]+)?/) {
-                if (versionTag.startsWith("v")) {
-                    versionTag = versionTag[1..-1]
-                }
-                logger.quiet("Building version ${versionTag}.")
-                project.version = versionTag
-
-                ext.versionDir = new File("${buildDir}", "generated/eu/luminis/jmeter/wssampler")
-                versionDir.mkdirs()
-
-                new File(versionDir, "version.properties").text = versionTag
-            } else {
-                logger.error("Version tag '${versionTag}' does not contain a valid version.");
-            }
-        }
-    }
-}
-
-compileJava.dependsOn determineVersion
 
 test {
   testLogging {
@@ -133,11 +132,11 @@ uploadArchives {
             }
 	    
             pom.project {
-                name 'JMeter WebSocket Samplers'
+                name 'JMeter ILP Samplers'
                 packaging 'jar'
-                artifactId 'jmeter-websocket-samplers'
-                description 'JMeter add-on that defines a number of samplers for load testing WebSocket applications.'
-                url 'https://bitbucket.org/pjtr/jmeter-websocket-samplers'
+                artifactId 'jmeter-ilp-samplers'
+                description 'JMeter add-on that defines a number of samplers for load testing ILP applications.'
+                url 'https://github.com/adrianhopebailie/jmeter-ilp-samplers'
 
                 licenses {
                     license {
@@ -148,17 +147,15 @@ uploadArchives {
                 }
                 developers {
                     developer {
-                        id 'peterd'
-                        name 'Peter Doornbosch'
-                        email 'peter.doornbosch@luminis.eu'
-                        organization 'Luminis'
-                        organizationUrl 'http://www.luminis.eu'
+                        id 'adrianhopebailie'
+                        name 'Adrian Hope-Bailie'
+                        email 'adrian@hopebailie.com'
                     }
                 }
                 scm {
-                    connection 'scm:git:git://bitbucket.org/pjtr/jmeter-websocket-samplers.git'
-                    developerConnection 'scm:git:ssh://bitbucket.org:pjtr/jmeter-websocket-samplers.git'
-                    url 'https://bitbucket.org/pjtr/jmeter-websocket-samplers/src'
+                    connection 'scm:git:git://github.com/adrianhopebailie/jmeter-ilp-samplers.git'
+                    developerConnection 'scm:git:ssh://github.com:adrianhopebailie/jmeter-ilp-samplers.git'
+                    url 'https://github.com/adrianhopebailie/jmeter-ilp-samplers/src'
                 }
             }
         }

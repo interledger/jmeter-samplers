@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.interledger.jmeter.samplers.IlpPacketForm">
+  <grid id="27dc6" binding="ilpPacketPanel" layout-manager="FormLayout">
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <colspec value="fill:87px:noGrow"/>
+    <colspec value="fill:12px:noGrow"/>
+    <colspec value="left:121dlu:noGrow"/>
+    <colspec value="fill:102px:noGrow"/>
+    <colspec value="fill:93px:noGrow"/>
+    <colspec value="fill:314px:noGrow"/>
+    <constraints>
+      <xy x="20" y="217" width="961" height="284"/>
+    </constraints>
+    <properties/>
+    <border type="line" title="ILP Packet">
+      <color color="-4473925"/>
+    </border>
+    <children>
+      <component id="8e69d" class="javax.swing.JLabel" binding="addressLabel">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <labelFor value="2dbd4"/>
+          <text value="Address: "/>
+        </properties>
+      </component>
+      <component id="ffae0" class="javax.swing.JLabel" binding="amountLabel">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <labelFor value="25d37"/>
+          <text value="Amount: "/>
+        </properties>
+      </component>
+      <component id="ae8fd" class="javax.swing.JLabel" binding="conditionLabel">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <labelFor value="b57e3"/>
+          <text value="Condition: "/>
+        </properties>
+      </component>
+      <component id="5aba6" class="javax.swing.JTextField" binding="expiryField">
+        <constraints>
+          <grid row="10" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <columns value="10"/>
+        </properties>
+      </component>
+      <component id="4288a" class="javax.swing.JLabel" binding="dataLabel">
+        <constraints>
+          <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <labelFor value="ef072"/>
+          <text value="Data: "/>
+        </properties>
+      </component>
+      <component id="ac2a7" class="javax.swing.JLabel" binding="expiryLabel">
+        <constraints>
+          <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <labelFor value="5aba6"/>
+          <text value="Expiry (ms): "/>
+        </properties>
+      </component>
+      <component id="b2836" class="javax.swing.JLabel" binding="fulfillmentLabel">
+        <constraints>
+          <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <labelFor value="4ecce"/>
+          <text value="Fulfillment: "/>
+        </properties>
+      </component>
+      <component id="7898e" class="javax.swing.JCheckBox" binding="fromFulfillmentCheckBox" default-binding="true">
+        <constraints>
+          <grid row="14" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="From fulfillment"/>
+        </properties>
+      </component>
+      <scrollpane id="1a6a1">
+        <constraints>
+          <grid row="18" column="1" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="ef072" class="javax.swing.JTextArea" binding="dataField">
+            <constraints/>
+            <properties>
+              <lineWrap value="true"/>
+              <rows value="5"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="2dbd4" class="javax.swing.JTextField" binding="addressField">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="25d37" class="javax.swing.JTextField" binding="amountField">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="b57e3" class="javax.swing.JTextField" binding="conditionField">
+        <constraints>
+          <grid row="12" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <minimumSize width="70" height="30"/>
+        </properties>
+      </component>
+      <component id="31b89" class="javax.swing.JLabel" binding="messageField">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value=" "/>
+        </properties>
+      </component>
+      <component id="4ecce" class="javax.swing.JTextField" binding="fulfillmentField">
+        <constraints>
+          <grid row="16" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="9221" class="javax.swing.JComboBox" binding="typeSelect">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="PREPARE"/>
+            <item value="FULFILL"/>
+          </model>
+        </properties>
+      </component>
+      <component id="52dd3" class="javax.swing.JLabel" binding="typeLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <labelFor value="9221"/>
+          <opaque value="true"/>
+          <text value="Type:"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
