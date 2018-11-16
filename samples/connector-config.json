@@ -1,0 +1,92 @@
+{
+  "store": "memdown",
+  "backend": "one-to-one",
+  "adminApi": false,
+  "ilpAddress": "test.local",
+  "accounts": {
+    "USER000001": {
+      "plugin": "ilp-plugin-btp",
+      "relation": "peer",
+      "assetCode": "USD",
+      "assetScale": 9,
+      "sendRoutes": false,
+      "receiveRoutes": false,
+      "options": {
+        "listener": {
+          "port": 7001,
+          "secret": "c4248f9ae8887566e45bd1f498d56e93"
+        }
+      }
+    },
+    "USER000002": {
+      "plugin": "ilp-plugin-btp",
+      "relation": "peer",
+      "assetCode": "USD",
+      "assetScale": 9,
+      "sendRoutes": false,
+      "receiveRoutes": false,
+      "options": {
+        "listener": {
+          "port": 7002,
+          "secret": "d50c8867cfaa63a5fd6b93e578678733"
+        }
+      }
+    },
+    "USER000003": {
+      "plugin": "ilp-plugin-btp",
+      "relation": "peer",
+      "assetCode": "USD",
+      "assetScale": 9,
+      "sendRoutes": false,
+      "receiveRoutes": false,
+      "options": {
+        "listener": {
+          "port": 7003,
+          "secret": "13933ab178ee21c3eb1d255399858f07"
+        }
+      }
+    },
+    "USER000004": {
+      "plugin": "ilp-plugin-btp",
+      "relation": "peer",
+      "assetCode": "USD",
+      "assetScale": 9,
+      "sendRoutes": false,
+      "receiveRoutes": false,
+      "options": {
+        "listener": {
+          "port": 7004,
+          "secret": "56a848e57aff2ad00b15c34ca1e08edd"
+        }
+      }
+    },
+    "USER000005": {
+      "plugin": "ilp-plugin-btp",
+      "relation": "peer",
+      "assetCode": "USD",
+      "assetScale": 9,
+      "sendRoutes": false,
+      "receiveRoutes": false,
+      "options": {
+        "listener": {
+          "port": 7005,
+          "secret": "b93b53d46b2db0022f425dc7171ab341"
+        }
+      }
+    },
+    "load-test": {
+      "plugin": "ilp-plugin-btp",
+      "relation": "child",
+      "assetCode": "USD",
+      "assetScale": 9,
+      "sendRoutes": false,
+      "receiveRoutes": false,
+      "options": {
+        "listener": {
+          "port": 7768,
+          "secret": "load-test"
+        }
+      }
+    }
+  }
+}
