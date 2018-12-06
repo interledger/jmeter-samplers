@@ -22,7 +22,7 @@ RUN    apk update \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies
 
-COPY libs/JMeterIlpSamplers-dev-all.jar $JMETER_HOME/lib/ext/.
+COPY ./build/libs/JMeterIlpSamplers-all.jar $JMETER_HOME/lib/ext/.
 
 # Set global PATH such that "jmeter" command is found
 ENV PATH $PATH:$JMETER_BIN
