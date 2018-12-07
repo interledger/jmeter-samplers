@@ -29,7 +29,9 @@ ENV PATH $PATH:$JMETER_BIN
 
 # Entrypoint has same signature as "jmeter" command
 COPY entrypoint.sh /
+COPY scripts/wait-for-it.sh /
 RUN chmod +x /entrypoint.sh
+RUN chmod +x /wait-for-it.sh
 
 WORKDIR	${JMETER_HOME}
 
