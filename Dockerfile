@@ -1,6 +1,15 @@
+FROM openjdk:8 as ilpjar
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN ./gradlew shadowJar
+
 # adapted from https://github.com/justb4/docker-jmeter
 FROM alpine:3.8
 
+WORKDIR /usr/src/app
 ARG JMETER_VERSION="4.0"
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV	JMETER_BIN	${JMETER_HOME}/bin
@@ -22,7 +31,7 @@ RUN    apk update \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies
 
-COPY ./build/libs/JMeterIlpSamplers-all.jar $JMETER_HOME/lib/ext/.
+COPY --from=ilpjar /usr/src/app/build/libs/JMeterIlpSamplers-all.jar $JMETER_HOME/lib/ext/.
 
 # Set global PATH such that "jmeter" command is found
 ENV PATH $PATH:$JMETER_BIN
